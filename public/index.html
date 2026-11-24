@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Real-Time Chat</title>
+
+  <!-- All the styling lives in style.css -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+
+    <!-- 1. HEADER: chat name, connection status and theme switch -->
+    <header>
+      <div class="avatar">RC</div>
+      <div class="title">
+        <h1>Real-Time Chat</h1>
+        <div id="status">connecting…</div>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" type="button">
+        <span id="theme-icon">🌙</span>
+        <span class="label" id="theme-label">Dark</span>
+      </button>
+    </header>
+
+    <!-- 2. MESSAGE LIST: every new message is added here as an <li> -->
+    <ul id="messages">
+      <li class="day-chip">Today</li>
+      <li class="empty" id="empty">No messages yet. Say hi to everyone who's connected.</li>
+    </ul>
+
+    <!-- Shows "someone is typing…" -->
+    <div id="typing"></div>
+
+    <!-- 3. FOOTER: emoji button, text box and send button -->
+    <footer>
+      <div id="emoji-panel"></div>
+      <button class="icon-btn" id="emoji-btn" type="button">😊</button>
+      <input id="message" placeholder="Type a message" autocomplete="off">
+      <button class="send-btn" id="send-btn" type="button" onclick="sendMessage()">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M2.01 21 23 12 2.01 3 2 10l15 2-15 2z"/>
+        </svg>
+      </button>
+    </footer>
+
+  </div>
+
+  <!-- Socket.IO client library, served by our server on port 3000 -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js"></script>
+
+  <!-- All the chat logic lives in script.js -->
+  <script src="script.js"></script>
+</body>
+</html>
